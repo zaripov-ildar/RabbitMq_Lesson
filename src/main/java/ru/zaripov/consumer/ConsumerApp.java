@@ -5,7 +5,7 @@ import com.rabbitmq.client.*;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class ReceiverStarter {
+public class ConsumerApp {
     public static final String EXCHANGE_NAME = "it_blog";
 
     public static void main(String[] args) throws IOException, TimeoutException {
@@ -22,11 +22,11 @@ public class ReceiverStarter {
 
         DeliverCallback callback = (consumerTag, deliver) -> {
             String msg = new String(deliver.getBody());
-            System.out.println(msg);
+            String topic = deliver.getEnvelope().getRoutingKey();
+            System.out.printf("%s >>> %s%n", topic, msg);
         };
         channel.basicConsume(queueName, true, callback, consumerTag -> {
         });
-
     }
 }
 
