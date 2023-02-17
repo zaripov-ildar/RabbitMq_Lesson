@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Random;
 
 public class MessageGenerator {
-    private final String[] topics = {"php", "java", "go", "python", "kotlin"};
+    private final String[] topics = {"php", "java", "go", "python", "kotlin", "sql"};
     private final String exchangeName;
     private final Channel channel;
 
